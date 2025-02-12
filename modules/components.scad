@@ -38,8 +38,8 @@ module dovetail_connector(height, dt_scale=1.0, channel=false, cut=true) {
     }
 }
 
-module dovetail_channel(height) {
-    dovetail_connector(height, dt_scale=1.15, channel=true, cut=false);
+module dovetail_channel(height, dt_scale=1.15) {
+    dovetail_connector(height, dt_scale=dt_scale, channel=true, cut=false);
 }
 
 module dovetail_connector_support(height, channel=true) {

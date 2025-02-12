@@ -107,6 +107,9 @@ Preview_Full_Render = false;
 // Only generate housing cross-section to print for fit testing
 Housing_Cross_Section = false;
 
+// Scale factor for dovetail channels
+dt_scale = 1.15;
+
 module __end_customizer_options__() { }
 
 /* Computed values */
@@ -374,13 +377,13 @@ module housing_connector_subtract() {
             unit*extra_unit_height+base_unit_height/4,
             -housing_outer_width
         ])
-        dovetail_channel(housing_outer_depth);
+        dovetail_channel(housing_outer_depth, dt_scale=dt_scale);
     }
     // Bottom
     for(unit = [1:Width_Units]) {
         translate([0,(unit-1)*extra_unit_width,0])
         translate([0,base_unit_width/2])
-        dovetail_channel(housing_outer_depth);
+        dovetail_channel(housing_outer_depth, dt_scale=dt_scale);
     }
 }
 
@@ -936,7 +939,7 @@ module plate_connector_subtract() {
         for(unit = [1:Width_Units]) {
             translate([0,(unit-1)*extra_unit_width,0])
             translate([0,base_unit_width/2])
-            dovetail_channel(plate_outer_depth);
+            dovetail_channel(plate_outer_depth, dt_scale=dt_scale);
         }
     }
 }
